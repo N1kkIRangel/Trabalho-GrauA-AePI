@@ -5,14 +5,18 @@ Algoritmo "TrabalhoAePI"
 
 Var
    sexo,corOlho,corCabelo,novo: caracter
-   peso,altura: real
-   idade,totalPessoas,totalMasculino,totalFeminino,totalOutros: inteiro
+   peso,altura, percentual,mediaPeso,pesoMasculino,pesoFeminino,pesoOutros,pesoTotal: real
+   idade,totalPessoas,totalMasculino,totalFeminino,totalOutros,mediaIdade: inteiro
 Inicio
- totalPessoas <- 0
- totalMasculino <-0
- totalFeminino <- 0
- totalOutros <- 0
- 
+   totalPessoas <- 0
+   totalMasculino <-0
+   totalFeminino <- 0
+   totalOutros <- 0
+   pesoMasculino <- 0
+   pesoFeminino<- 0
+   pesoOutros <- 0
+   pesoTotal <- 0
+
    repita
       repita
          escreva("Escolha uma opção para sexo (M-Masculino, F-Feminino e O-Outro): ")
@@ -74,15 +78,45 @@ Inicio
 
       escreva ("Digite o peso: ")
       leia (peso)
-      
-     totalPessoas <- totalPessoas + 1
-     
+      pesoTotal <- pesoTotal + peso
+      se (sexo = "M") entao
+         pesoMasculino <- pesoMasculino + peso
+      senao
+         se (sexo = "F") entao
+            pesoFeminino <- pesoFeminino + peso
+         senao
+            se (sexo = "O") entao
+               pesoOutros <- pesoOutros + peso
+            fimse
+         fimse
+      fimse
+
+      totalPessoas <- totalPessoas + 1
+
       escreva ("Você quer fazer outro cadastro (digite S-sim ou N-não): ")
       leia (novo)
       limpatela()
    ate (novo = "N")
-  escreval ("Total de pessoas: ",totalPessoas)
-  escreval ("Total de homens: ",totalMasculino)
-  escreval ("Total de mulheres: ",totalFeminino)
-  escreval ("Total de outros: ",totalOutros)
+   escreval ("Total de pessoas: ",totalPessoas)
+   escreval ("Total de homens: ",totalMasculino)
+   escreval ("Total de mulheres: ",totalFeminino)
+   escreval ("Total de outros: ",totalOutros)
+
+   percentual <- (totalMasculino / totalPessoas) * 100
+   escreval (" O percentual de homens é: ",percentual,"%")
+
+   percentual <- (totalFeminino / totalPessoas) * 100
+   escreval (" O percentual de mulheres é: ",percentual,"%")
+
+   percentual <- (totalOutros / totalPessoas) * 100
+   escreval (" O percentual de Outros é: ",percentual,"%")
+
+   mediaPeso <- (pesoMasculino / totalMasculino)
+   escreval ("A média de peso masculino é de: ",mediaPeso)
+   mediaPeso <- (pesoFeminino / totalFeminino)
+   escreval ("A média de peso feminino é de: ",mediaPeso)
+   mediaPeso <- (pesoOutros / totalOutros)
+   escreval ("A média de peso feminino é de: ",mediaPeso)
+   mediaPeso <- (pesoTotal / totalPessoas)
+   escreval ("A média total do pesso das pessoas é de: ",mediaPeso)
 Fimalgoritmo
