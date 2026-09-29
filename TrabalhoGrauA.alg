@@ -108,12 +108,22 @@ Inicio
       ate ((corCabelo = "L") ou (corCabelo = "P") ou (corCabelo = "C") ou (corCabelo = "R"))
 
       //altura
-      escreva ("Digite a altura: ")
-      leia (altura)
+      repita
+         escreva ("Digite a altura: ")
+         leia (altura)
+         se ((altura <=0) ou (altura > 2.50)) entao
+            escreval ("Altura inválida!")
+         fimse
+      ate ((altura > 0) e (altura < 2.50))
 
       //idade
-      escreva ("Digite a idade: ")
-      leia (idade)
+      repita
+         escreva ("Digite a idade: ")
+         leia (idade)
+         se ((idade <=0) ou (idade > 120)) entao
+            escreval ("Idade inválida!")
+         fimse
+      ate ((idade > 0) e (idade < 120))
 
       // idade mais velha e mais nova
       se totalPessoas = 0 entao
@@ -135,9 +145,14 @@ Inicio
       fimse
 
       //peso
-      escreva ("Digite o peso: ")
-      leia (peso)
-      pesoTotal <- pesoTotal + peso
+      repita
+         escreva ("Digite o peso: ")
+         leia (peso)
+         pesoTotal <- pesoTotal + peso
+         se ((peso <=0) ou (peso >= 700)) entao
+            escreval ("Peso inválido!")
+         fimse
+      ate ((peso > 0) e (peso < 700))
 
       //médias de peso
       se (sexo = "M") entao
@@ -157,7 +172,6 @@ Inicio
       escreva ("Você quer fazer outro cadastro (digite S-sim ou N-não): ")
       leia (novo)
       limpatela()
-
    ate (novo = "N")
 
    escreval ("Total de pessoas: ",totalPessoas)
@@ -165,12 +179,16 @@ Inicio
    escreval ("Total de mulheres: ",totalFeminino)
    escreval ("Total de outros: ",totalOutros)
 
+   escreval ("")
+
    percentual <- (totalMasculino / totalPessoas) * 100
    escreval ("O percentual de homens é: ",percentual,"%")
    percentual <- (totalFeminino / totalPessoas) * 100
    escreval ("O percentual de mulheres é: ",percentual,"%")
    percentual <- (totalOutros / totalPessoas) * 100
    escreval ("O percentual de Outros é: ",percentual,"%")
+   
+   escreval ("")
 
    se totalMasculino > 0 entao
       mediaPeso <- pesoMasculino / totalMasculino
@@ -181,40 +199,48 @@ Inicio
       mediaPeso <- pesoFeminino / totalFeminino
       escreval("A média de peso feminino é de: ", mediaPeso)
    fimse
-   
+
    se totalOutros > 0 entao
       mediaPeso <- pesoOutros / totalOutros
       escreval("A média de peso de outros é de: ", mediaPeso)
    fimse
+
+   mediaPeso <- (pesoTotal / totalPessoas)
+   escreval ("A média total do peso das pessoas é de: ",mediaPeso)
    
-    mediaPeso <- (pesoTotal / totalPessoas)
-    escreval ("A média total do peso das pessoas é de: ",mediaPeso)
+   escreval ("")
 
    // idade
    escreval ("Idade do mais velho: ",idadeMaisVelho)
    escreval ("Idade do mais novo: ",idadeMaisNovo)
+   
+   escreval ("")
 
    // cor do cabelo
 
    percentual <- (totalCabeloLouro / totalPessoas) * 100
-   escreval ("Louros: ",totalCabeloLouro," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas loiras é de: ",percentual,"%")
    percentual <- (totalCabeloPreto / totalPessoas) * 100
-   escreval ("Pretos: ",totalCabeloPreto," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas com cabelo preto é de: ",percentual,"%")
    percentual <- (totalCabeloCastanho / totalPessoas) * 100
-   escreval ("Castanhos: ",totalCabeloCastanho," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas morenas é de: ",percentual,"%")
    percentual <- (totalCabeloRuivo / totalPessoas) * 100
-   escreval ("Ruivos: ",totalCabeloRuivo," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas ruivas é de: ",percentual,"%")
+   
+   escreval ("")
 
    // cor dos olhos
 
    percentual <- (totalOlhoAzul / totalPessoas) * 100
-   escreval ("Azuis: ",totalOlhoAzul," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas com o olho azul é de: ",percentual,"%")
    percentual <- (totalOlhoVerde / totalPessoas) * 100
-   escreval ("Verdes: ",totalOlhoVerde," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas com o olho verde é de: ",percentual,"%")
    percentual <- (totalOlhoCastanho / totalPessoas) * 100
-   escreval ("Castanhos: ",totalOlhoCastanho," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas com o olho castanho é de: ",percentual,"%")
    percentual <- (totalOlhoPreto / totalPessoas) * 100
-   escreval ("Pretos: ",totalOlhoPreto," pessoas - ",percentual,"%")
+   escreval ("O percentual de pessoas com o olho preto é de: ",percentual,"%")
+   
+   escreval ("")
 
    // maiores de idade com olhos verdes e cabelos pretos
 
